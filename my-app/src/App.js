@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { MdOutlineRefresh } from 'react-icons/md';
 import axios from "axios";
 
 function App() {
@@ -13,9 +14,8 @@ function App() {
   const handleCurrencyClick = (currency) => {
     setSelectedCurrency(currency);
   };
-  
 
-  useEffect(() => {
+  const fetchData = () => {
     const apiUrlBtcUsd =
       "https://api.coinpaprika.com/v1/tickers/btc-bitcoin?quotes=USD";
     const apiUrlBtcGbp =
@@ -25,7 +25,6 @@ function App() {
     const apiUrlEthGbp =
       "https://api.coinpaprika.com/v1/tickers/eth-ethereum?quotes=GBP";
 
-    // Use Axios to make multiple GET requests using axios.all() and axios.spread()
     axios
       .all([
         axios.get(apiUrlBtcUsd),
@@ -36,13 +35,11 @@ function App() {
       .then(
         axios.spread(
           (responseBtcUsd, responseBtcGbp, responseEthUsd, responseEthGbp) => {
-            // Access the relevant data from the responses for Bitcoin and Ethereum in USD and GBP
             const btcDataUsd = responseBtcUsd.data;
             const btcDataGbp = responseBtcGbp.data;
             const ethDataUsd = responseEthUsd.data;
             const ethDataGbp = responseEthGbp.data;
 
-            // Set the fetched data to the state using setData()
             setData({ btcDataUsd, btcDataGbp, ethDataUsd, ethDataGbp });
           }
         )
@@ -50,51 +47,75 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handleRefreshClick = () => {
+    fetchData();
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   if (!data) return null;
 
-  console.log(data);
-
   const displayData = () => {
-    if (selectedCrypto === "Bitcoin" && selectedCurrency === "USD") {
-      return data.btcDataUsd.quotes.USD.price.toFixed(2);
+    let currencySymbol = selectedCurrency === "USD" ? "$" : "£";
+
+    if (selectedCrypto === "Bitcoin - BTC" && selectedCurrency === "USD") {
+      return currencySymbol + data.btcDataUsd.quotes.USD.price.toFixed(2);
     }
-    if (selectedCrypto === "Bitcoin" && selectedCurrency === "GBP") {
-      return data.btcDataGbp.quotes.GBP.price.toFixed(2);
+    if (selectedCrypto === "Bitcoin - BTC" && selectedCurrency === "GBP") {
+      return currencySymbol + data.btcDataGbp.quotes.GBP.price.toFixed(2);
     }
-    if (selectedCrypto === "Ethereum" && selectedCurrency === "USD") {
-      return data.ethDataUsd.quotes.USD.price.toFixed(2);
+    if (selectedCrypto === "Ethereum - ETH" && selectedCurrency === "USD") {
+      return currencySymbol + data.ethDataUsd.quotes.USD.price.toFixed(2);
     }
-    if (selectedCrypto === "Ethereum" && selectedCurrency === "GBP") {
-      return data.ethDataGbp.quotes.GBP.price.toFixed(2);
+    if (selectedCrypto === "Ethereum - ETH" && selectedCurrency === "GBP") {
+      return currencySymbol + data.ethDataGbp.quotes.GBP.price.toFixed(2);
     }
   };
+
+  
+  
+
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-200">
       <div className="bg-gradient-to-b from-[#261c35] to-[#24325e] w-80 h-160 rounded-lg shadow-lg p-10">
-        {/* Add a form to select crypto currency */}
+        
+        {/* Crypto Currency Selection Container */}
         <form>
-         
           <select
             id="crypto"
             name="crypto"
             onChange={handleCryptoChange}
-            className="w-full px-4 py-4 text-[#499eb3] outline outline-[#499eb3] rounded-3xl focus:ring-[#499eb3] focus:border-[#499eb3] text-lg "
+            className="w-full px-4 py-4 text-[#499eb3] font-bold outline outline-[#499eb3] rounded-3xl focus:ring-[#499eb3] focus:border-[#499eb3] text-lg "
           >
-            <option value="Bitcoin">Bitcoin</option>
-            <option value="Ethereum">Ethereum</option>
+            <option value="Bitcoin - BTC">Bitcoin - BTC</option>
+            <option value="Ethereum - ETH">Ethereum - ETH</option>
           </select>
         </form>
 
-        {/* Display the data based on the selected crypto and currency */}
-        <div className="flex mt-8 pl-2 px-60 py-4 rounded-2xl bg-gradient-to-r from-[#f67a60] to-[#f59f9a]">
-        
-          <p className="text-white">
-            {selectedCrypto} and {selectedCurrency}: {displayData()}
-          </p>
-        </div>
+        {/* Data Display Container and Refresh Button */}
+        <div className="relative mt-8  py-20 rounded-2xl bg-gradient-to-r from-[#f67a60] to-[#f59f9a]">
+  {/* Refresh button */}
+  <div className="absolute top-0 right-0 p-2">
+    <button
+      className="text-white focus:outline-none"
+      onClick={handleRefreshClick}
+    >
+      <MdOutlineRefresh size={40} />
+    </button>
+  </div>
+  {/* Display */}
+  <div className="flex justify-center items-center h-full">
+    <p className="text-white text-center w-full">
+      {selectedCrypto} {displayData()}
+    </p>
+  </div>
+</div>
+
 
         {/* Currency tabs */}
         <div className="flex mt-8">
@@ -119,6 +140,8 @@ function App() {
             GBP
           </button>
         </div>
+        
+    
       </div>
     </div>
   );
