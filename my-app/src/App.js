@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MdOutlineRefresh } from 'react-icons/md';
+import { MdOutlineRefresh } from "react-icons/md";
 import axios from "axios";
 
 function App() {
@@ -76,46 +76,43 @@ function App() {
     }
   };
 
-  
-  
-
-
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-200">
       <div className="bg-gradient-to-b from-[#261c35] to-[#24325e] w-80 h-160 rounded-lg shadow-lg p-10">
-        
         {/* Crypto Currency Selection Container */}
         <form>
           <select
             id="crypto"
             name="crypto"
             onChange={handleCryptoChange}
-            className="w-full px-4 py-4 text-[#499eb3] font-bold outline outline-[#499eb3] rounded-3xl focus:ring-[#499eb3] focus:border-[#499eb3] text-lg "
+            className="w-full px-4 py-4  bg-opacity-0 text-[#499eb3] font-bold  rounded-3xl  text-lg border border-[#499eb3] "
           >
-            <option value="Bitcoin - BTC">Bitcoin - BTC</option>
-            <option value="Ethereum - ETH">Ethereum - ETH</option>
+            <option className="font-bold" value="Bitcoin - BTC">Bitcoin - BTC</option>
+            <option className="font-bold" value="Ethereum - ETH">Ethereum - ETH</option>
           </select>
         </form>
 
         {/* Data Display Container and Refresh Button */}
-        <div className="relative mt-8  py-20 rounded-2xl bg-gradient-to-r from-[#f67a60] to-[#f59f9a]">
-  {/* Refresh button */}
-  <div className="absolute top-0 right-0 p-2">
-    <button
-      className="text-white focus:outline-none"
-      onClick={handleRefreshClick}
-    >
-      <MdOutlineRefresh size={40} />
-    </button>
-  </div>
-  {/* Display */}
-  <div className="flex justify-center items-center h-full">
-    <p className="text-white text-center w-full">
-      {selectedCrypto} {displayData()}
-    </p>
-  </div>
-</div>
-
+        <div className="relative mt-8  py-16 rounded-2xl bg-gradient-to-r from-[#f67a60] to-[#f59f9a]">
+          {/* Refresh button */}
+          <div className="absolute top-0 right-0 p-2">
+            <button
+              className="text-white focus:outline-none"
+              onClick={handleRefreshClick}
+            >
+              <MdOutlineRefresh size={40} />
+            </button>
+          </div>
+          {/* Display */}
+          <div className="flex justify-center items-center h-full">
+            <p className="text-xl text-white text-center w-full">
+              {selectedCrypto}
+              <p className="text-3xl font-bold text-white text-center w-full">
+                {displayData()}
+              </p>
+            </p>
+          </div>
+        </div>
 
         {/* Currency tabs */}
         <div className="flex mt-8">
@@ -140,8 +137,6 @@ function App() {
             GBP
           </button>
         </div>
-        
-    
       </div>
     </div>
   );

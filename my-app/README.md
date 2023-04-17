@@ -7,11 +7,15 @@ Step 6 - Round the values 2 decimal places ✔️
 Step 7 - Basic Layout and Styling ✔️
 Step 8 - Add State and OnChanges Handle Clicks etc (so bitcoin and usd displays whats chosen) ✔️
 Step 7-  (Perfect Styling) very close MVP Complete ✔️
-Step 10 - Add refresh tab
+Step 10 - Add refresh tab ✔️
 Step 11 - Code refactoring aim for single GET request and convert in to component based application
 
+Notes: Application completed matching the example given closely. Refresh button does work but wont always change if pressed in quick succession, as the displayed data is set to 2 decimal places it may take 10 seconds plus for a change in this to occur on the crypto markets. I only note this as my fis thought was why is the button not working.
 
-Stack: React, Tailwind, Axios, React-Icons, Hero-icons
+Changes: Really struggled to find a refresh icon in direction of example in react-icons same symbol facing other direction.
+
+
+Stack: React, Tailwind, Axios, React-Icons
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
