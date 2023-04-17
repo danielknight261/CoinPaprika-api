@@ -4,7 +4,7 @@ import axios from "axios";
 
 function App() {
   const [data, setData] = useState(null);
-  const [selectedCrypto, setSelectedCrypto] = useState("Bitcoin");
+  const [selectedCrypto, setSelectedCrypto] = useState(""); // Initialize as an empty string
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
 
   const handleCryptoChange = (e) => {
@@ -80,13 +80,14 @@ function App() {
     <div className="flex justify-center items-center min-h-screen bg-gray-200">
       <div className="bg-gradient-to-b from-[#261c35] to-[#24325e] w-80 h-160 rounded-lg shadow-lg p-10">
         {/* Crypto Currency Selection Container */}
-        <form>
+       <form>
           <select
             id="crypto"
             name="crypto"
             onChange={handleCryptoChange}
             className="w-full px-4 py-4  bg-opacity-0 text-[#499eb3] font-bold  rounded-3xl  text-lg border border-[#499eb3] "
           >
+            <option value="" disabled selected>Select your crypto</option> {/* Add a default option */}
             <option className="font-bold" value="Bitcoin - BTC">Bitcoin - BTC</option>
             <option className="font-bold" value="Ethereum - ETH">Ethereum - ETH</option>
           </select>
