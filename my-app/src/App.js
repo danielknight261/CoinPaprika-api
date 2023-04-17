@@ -1,6 +1,7 @@
 // Import necessary libraries and components
 import React, { useState, useEffect } from "react";
 import { MdOutlineRefresh } from "react-icons/md";
+import { AiFillCaretDown } from 'react-icons/ai';
 import axios from "axios";
 
 function App() {
@@ -95,22 +96,32 @@ return (
     <div className="bg-gradient-to-b from-[#261c35] to-[#24325e] w-80 h-160 rounded-lg shadow-lg p-10">
       
       {/* Crypto Currency Selection Container */}
+      <div className="w-full">
       <form>
-        {/* Dropdown menu for selecting a cryptocurrency */}
-        <select
-          id="crypto"
-          name="crypto"
-          onChange={handleCryptoChange}
-          className="w-full px-4 py-4  bg-opacity-0 text-[#499eb3] font-bold  rounded-3xl  text-lg border border-[#499eb3] bg-transparent"
-        >
-          {/* Default option to prompt the user to select a crypto */}
-          <option value="" disabled selected>Select your crypto</option>
-          {/* Option for selecting Bitcoin */}
-          <option className="font-bold" value="Bitcoin - BTC">Bitcoin - BTC</option>
-          {/* Option for selecting Ethereum */}
-          <option className="font-bold" value="Ethereum - ETH">Ethereum - ETH</option>
-        </select>
+        <div className="relative w-full">
+          <select
+            id="crypto"
+            name="crypto"
+            value={selectedCrypto}
+            onChange={handleCryptoChange}
+            className="w-full px-4 py-4 bg-opacity-0 text-[#499eb3] font-bold rounded-3xl text-lg border border-[#499eb3] bg-transparent appearance-none"
+          >
+            <option value="" disabled>
+              Select your crypto
+            </option>
+            <option className="font-bold" value="Bitcoin - BTC">
+              Bitcoin - BTC
+            </option>
+            <option className="font-bold" value="Ethereum - ETH">
+              Ethereum - ETH
+            </option>
+          </select>
+          <div className="absolute right-4 top-4 pointer-events-none">
+            <AiFillCaretDown className="w-6 h-6 text-[#499eb3]" />
+          </div>
+        </div>
       </form>
+    </div>
 
       {/* Data Display Container and Refresh Button */}
       <div className="relative mt-8  py-16 rounded-2xl bg-gradient-to-r from-[#f67a60] to-[#f59f9a]">
