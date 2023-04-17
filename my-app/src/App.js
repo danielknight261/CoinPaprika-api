@@ -46,10 +46,10 @@ function App() {
 
   return (
     <div>
-      <h1>GBP BitCoin: £{data.btcDataGbp.quotes.GBP.ath_price}</h1>
-      <h1>GBP Ethereum: £{data.ethDataGbp.quotes.GBP.ath_price}</h1>
-      <h1>USD BitCoin Value: ${data.btcDataUsd.quotes.USD.ath_price}</h1>
-      <h1>USD Ethereum: ${data.ethDataUsd.quotes.USD.ath_price}</h1>
+      <h1>GBP BitCoin: £{data.btcDataGbp.quotes.GBP.price.toFixed(2)}</h1>
+      <h1>GBP Ethereum: £{data.ethDataGbp.quotes.GBP.price.toFixed(2)}</h1>
+      <h1>USD BitCoin Value: ${data.btcDataUsd.quotes.USD.price.toFixed(2)}</h1>
+      <h1>USD Ethereum: ${data.ethDataUsd.quotes.USD.price.toFixed(2)}</h1>
     </div>
     // JSX for your App component
     // ...
