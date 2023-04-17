@@ -1,3 +1,10 @@
+Step 1 - Setup variable ( React, Tailwind )  ✔️ 
+Step 2 - Early Hosting  ✔️ 
+Step 3 - Test GET Request using PostMan ✔️ 
+Step 4 -
+
+
+Stack: React, Tailwind, Axios
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
