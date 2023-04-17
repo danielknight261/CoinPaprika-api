@@ -116,7 +116,7 @@ return (
               Ethereum - ETH
             </option>
           </select>
-          <div className="absolute right-4 top-4 pointer-events-none">
+          <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
             <AiFillCaretDown className="w-6 h-6 text-[#499eb3]" />
           </div>
         </div>
