@@ -6,13 +6,13 @@ function App() {
 
   useEffect(() => {
     const apiUrlBtcUsd =
-      "https://api.coinpaprika.com/v1/tickers/btc-bitcoin?quote=USD";
+      "https://api.coinpaprika.com/v1/tickers/btc-bitcoin?quotes=USD";
     const apiUrlBtcGbp =
-      "https://api.coinpaprika.com/v1/tickers/btc-bitcoin?quote=GBP";
+      "https://api.coinpaprika.com/v1/tickers/btc-bitcoin?quotes=GBP";
     const apiUrlEthUsd =
-      "https://api.coinpaprika.com/v1/tickers/eth-ethereum?quote=USD";
+      "https://api.coinpaprika.com/v1/tickers/eth-ethereum?quotes=USD";
     const apiUrlEthGbp =
-      "https://api.coinpaprika.com/v1/tickers/eth-ethereum?quote=GBP";
+      "https://api.coinpaprika.com/v1/tickers/eth-ethereum?quotes=GBP";
 
     // Use Axios to make multiple GET requests using axios.all() and axios.spread()
     axios
@@ -39,11 +39,18 @@ function App() {
       });
   }, []);
 
+  if(!data) return null
+
   console.log(data);
 
 
   return (
-    <div className="text-6xl">Hello API</div>
+    <div>
+      <h1>GBP BitCoin: £{data.btcDataGbp.quotes.GBP.ath_price}</h1>
+      <h1>GBP Ethereum: £{data.ethDataGbp.quotes.GBP.ath_price}</h1>
+      <h1>USD BitCoin Value: ${data.btcDataUsd.quotes.USD.ath_price}</h1>
+      <h1>USD Ethereum: ${data.ethDataUsd.quotes.USD.ath_price}</h1>
+    </div>
     // JSX for your App component
     // ...
   );

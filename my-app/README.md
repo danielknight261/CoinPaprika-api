@@ -2,7 +2,8 @@ Step 1 - Setup variable ( React, Tailwind )  ✔️
 Step 2 - Early Hosting  ✔️ 
 Step 3 - Test GET Request using PostMan ✔️ 
 Step 4 - Write GET Requests accessing raw information of the 4 requirements (Eth, Bit, USD and GBP) successful Console log(data) ✔️ 
-Step 5 - Display correct data on home page
+Step 5 - Display correct data on home pag from quotes
+Step 6 - Round the values 2 decimal places
 
 
 Stack: React, Tailwind, Axios
