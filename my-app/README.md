@@ -6,7 +6,9 @@ Step 5 - Display correct data on home page from quotes ✔️
 Step 6 - Round the values 2 decimal places ✔️
 Step 7 - Basic Layout and Styling ✔️
 Step 8 - Add State and OnChanges Handle Clicks etc (so bitcoin and usd displays whats chosen) ✔️
-Step 7-  (Perfect Styling)
+Step 7-  (Perfect Styling) very close MVP Complete ✔️
+Step 10 - Add refresh tab
+Step 11 - Code refactoring aim for single GET request and convert in to component based application
 
 
 Stack: React, Tailwind, Axios, React-Icons, Hero-icons

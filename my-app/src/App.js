@@ -73,52 +73,51 @@ function App() {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-200">
-      <div className="bg-white w-80 h-160 rounded-lg shadow-lg p-4">
+      <div className="bg-gradient-to-b from-[#261c35] to-[#24325e] w-80 h-160 rounded-lg shadow-lg p-10">
         {/* Add a form to select crypto currency */}
         <form>
-          <label htmlFor="crypto" className="text-gray-600 font-semibold">
-            Crypto Currency
-          </label>
+         
           <select
             id="crypto"
             name="crypto"
             onChange={handleCryptoChange}
-            className="w-full outline outline-blue-600 mt-1 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="w-full px-4 py-4 text-[#499eb3] outline outline-[#499eb3] rounded-3xl focus:ring-[#499eb3] focus:border-[#499eb3] text-lg "
           >
             <option value="Bitcoin">Bitcoin</option>
             <option value="Ethereum">Ethereum</option>
           </select>
         </form>
 
+        {/* Display the data based on the selected crypto and currency */}
+        <div className="flex mt-8 pl-2 px-60 py-4 rounded-2xl bg-gradient-to-r from-[#f67a60] to-[#f59f9a]">
+        
+          <p className="text-white">
+            {selectedCrypto} and {selectedCurrency}: {displayData()}
+          </p>
+        </div>
+
         {/* Currency tabs */}
-        <div className="flex mt-4">
+        <div className="flex mt-8">
           <button
-            className={`flex-1 px-4 py-2 text-center text-sm font-semibold focus:outline-none ${
+            className={`flex-1 px-4 py-4 text-center text-sm font-semibold focus:outline-none rounded-l-3xl  ${
               selectedCurrency === "USD"
-                ? "bg-indigo-500 text-white"
-                : "bg-gray-200 text-gray-600"
+                ? "bg-gradient-to-r from-[#546afc] to-[#36c6f9] text-white"
+                : "border border-[#499eb3] text-[#499eb3]"
             }`}
             onClick={() => handleCurrencyClick("USD")}
           >
             USD
           </button>
           <button
-            className={`flex-1 px-4 py-2 text-center text-sm font-semibold focus:outline-none ${
+            className={`flex-1 px-4 py-4 text-center text-sm font-semibold focus:outline-none rounded-r-3xl ${
               selectedCurrency === "GBP"
-                ? "bg-indigo-500 text-white"
-                : "bg-gray-200 text-gray-600"
+                ? "bg-gradient-to-r from-[#36c6f9] to-[#546afc] text-white"
+                : "border border-[#499eb3] text-[#499eb3]"
             }`}
             onClick={() => handleCurrencyClick("GBP")}
           >
             GBP
           </button>
-        </div>
-
-        {/* Display the data based on the selected crypto and currency */}
-        <div className="mt-4">
-          <p>
-            {selectedCrypto} and {selectedCurrency}: {displayData()}
-          </p>
         </div>
       </div>
     </div>
