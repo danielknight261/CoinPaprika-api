@@ -4,10 +4,12 @@ Step 3 - Test GET Request using PostMan ✔️
 Step 4 - Write GET Requests accessing raw information of the 4 requirements (Eth, Bit, USD and GBP) successful Console log(data) ✔️ 
 Step 5 - Display correct data on home page from quotes ✔️ 
 Step 6 - Round the values 2 decimal places ✔️
-Step 7- Begin Styling requirements (Drop down, refresh, USD and GBP tabs)
+Step 7 - Basic Layout and Styling ✔️
+Step 8 - Add State and OnChanges Handle Clicks etc (so bitcoin and usd displays whats chosen) ✔️
+Step 7-  (Perfect Styling)
 
 
-Stack: React, Tailwind, Axios
+Stack: React, Tailwind, Axios, React-Icons, Hero-icons
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
